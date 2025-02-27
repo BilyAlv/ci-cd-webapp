@@ -24,3 +24,14 @@ jobs:
 
       - name: Ejecutar pruebas
         run: npm test
+
+      - name: Construir aplicación
+        run: |
+          mkdir public
+          echo "¡Hola, mundo desde GitHub Pages!" > public/index.html
+
+      - name: Desplegar en GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
