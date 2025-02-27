@@ -25,10 +25,21 @@ jobs:
       - name: Ejecutar pruebas
         run: npm test
 
-      - name: Construir aplicación
+      - name: Crear archivo estático index.html
         run: |
-          mkdir public
-          echo "¡Hola, mundo desde GitHub Pages!" > public/index.html
+          mkdir -p public
+          echo "<!DOCTYPE html>
+          <html lang='es'>
+          <head>
+            <meta charset='UTF-8'>
+            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+            <title>ci-cd-webapp</title>
+          </head>
+          <body>
+            <h1>¡Hola, mundo desde GitHub Pages!</h1>
+            <p>Bienvenidos a mi aplicación desplegada usando GitHub Pages.</p>
+          </body>
+          </html>" > public/index.html
 
       - name: Desplegar en GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
